@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const mbColor = Color(0xFFEEE050);
+
 List<int> getHolds(List<int> circuit, int index) {
   var res = <int>[];
   for (var i = 0; i < circuit.length; i++) {
@@ -131,7 +132,7 @@ class _MoonboardLayoutState extends State<MoonboardLayout> {
             maxScale: 2,
             child: Stack(children: [
               Image.asset(
-                'mini_2020.png',
+                'assets/mini_2020.png',
                 // width: 200,
                 // height: 200,
                 fit: BoxFit.cover,
