@@ -21,15 +21,19 @@ String holdId(int index) {
 class MoonboardHold extends StatelessWidget {
   final List<int> circuit;
   final int index;
+  final double scale;
 
-  const MoonboardHold({required this.circuit, required this.index, Key? key})
+  const MoonboardHold(
+      {required this.circuit, required this.index, this.scale = 1.0, Key? key})
       : super(key: key);
 
   Widget text(int index) {
     return Text(
       holdId(index),
       style: TextStyle(
-          color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+          color: Colors.white,
+          fontSize: 19 * scale,
+          fontWeight: FontWeight.bold),
     );
   }
 
@@ -42,7 +46,7 @@ class MoonboardHold extends StatelessWidget {
     return Align(
         alignment: FractionalOffset.topCenter,
         child: Container(
-            padding: const EdgeInsets.all(4),
+            padding: EdgeInsets.all(4 * scale),
             color: Colors.blue[800]?.withOpacity(0.7),
             child: Wrap(
                 spacing: 4, children: holds.map((i) => text(i)).toList())));
@@ -94,7 +98,8 @@ class MoonboardHolds extends StatelessWidget {
             crossAxisSpacing: 2.0,
             mainAxisSpacing: 2.0,
             children: List.generate(12 * 11, (index) {
-              return MoonboardHold(circuit: circuit, index: index);
+              return MoonboardHold(
+                  circuit: circuit, index: index, scale: scale);
             })));
   }
 }
