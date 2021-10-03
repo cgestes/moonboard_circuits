@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mb_circuits/moonboard_painter.dart';
 
@@ -94,6 +95,7 @@ class MoonboardHolds extends StatelessWidget {
         scale: scale,
         offsetY: 44.0,
         child: GridView.count(
+            physics: const NeverScrollableScrollPhysics(),
             crossAxisCount: 11,
             crossAxisSpacing: 2.0,
             mainAxisSpacing: 2.0,
@@ -151,6 +153,7 @@ class MoonboardButtons extends StatelessWidget {
     return LayoutScalingPadding(
         scale: scale,
         child: GridView.count(
+            physics: const NeverScrollableScrollPhysics(),
             crossAxisCount: 11,
             crossAxisSpacing: 0.0,
             mainAxisSpacing: 0.0,
