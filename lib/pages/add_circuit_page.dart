@@ -37,50 +37,52 @@ class _AddCircuitPageState extends State<AddCircuitPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Moonboard circuits"), actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.undo),
-          tooltip: 'Undo',
-          onPressed: () {
-            setState(() {
-              circuit.removeLast();
-            });
-          },
-        ),
-        IconButton(
-          icon: const Icon(Icons.clear),
-          tooltip: 'Clear',
-          onPressed: () {
-            setState(() {
-              circuit.clear();
-            });
+      appBar: AppBar(
+          title: Text("Add a ${widget.boardVersion} circuit"),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.undo),
+              tooltip: 'Undo',
+              onPressed: () {
+                setState(() {
+                  circuit.removeLast();
+                });
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.clear),
+              tooltip: 'Clear',
+              onPressed: () {
+                setState(() {
+                  circuit.clear();
+                });
 
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text('Clear')));
-          },
-        ),
-        IconButton(
-          icon: const Icon(Icons.save_alt),
-          tooltip: 'Save',
-          onPressed: () async {
-            final db = Hive.box<Circuit>("circuits");
-            final c =
-                Circuit(boardVersion: "mini2020", name: name, circuit: circuit);
-            await db.add(c);
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text('Save')));
-            AutoRouter.of(context).pop();
-          },
-        ),
-        // IconButton(
-        //   icon: const Icon(Icons.share),
-        //   tooltip: 'Share',
-        //   onPressed: () {
-        //     ScaffoldMessenger.of(context)
-        //         .showSnackBar(const SnackBar(content: Text('Share')));
-        //   },
-        // ),
-      ]),
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(const SnackBar(content: Text('Clear')));
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.save),
+              tooltip: 'Save',
+              onPressed: () async {
+                final db = Hive.box<Circuit>("circuits");
+                final c = Circuit(
+                    boardVersion: "mini-2020", name: name, circuit: circuit);
+                await db.put(c.uid, c);
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(const SnackBar(content: Text('Save')));
+                AutoRouter.of(context).pop();
+              },
+            ),
+            // IconButton(
+            //   icon: const Icon(Icons.share),
+            //   tooltip: 'Share',
+            //   onPressed: () {
+            //     ScaffoldMessenger.of(context)
+            //         .showSnackBar(const SnackBar(content: Text('Share')));
+            //   },
+            // ),
+          ]),
       // body: ImagePaintPage(),
       body: MoonboardLayoutWithName(
           name: name,

@@ -47,12 +47,13 @@ class CircuitsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: const Text("Moonboard circuits"), actions: <Widget>[]),
-      body: const MoonboardCircuits(boardVersion: "mini2020"),
+      appBar: AppBar(
+          title: const Text("Moonboard mini-2020 circuits"),
+          actions: <Widget>[]),
+      body: const MoonboardCircuits(boardVersion: "mini-2020"),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          AutoRouter.of(context).pushNamed("/mini2020/add");
+          AutoRouter.of(context).pushNamed("/mini-2020/add");
         },
         child: const Icon(Icons.add),
         backgroundColor: Colors.yellow,
