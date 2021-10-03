@@ -20,6 +20,7 @@ class CircuitAdapter extends TypeAdapter<Circuit> {
       boardVersion: fields[1] as String,
       circuit: (fields[3] as List).cast<int>(),
       name: fields[2] as String,
+      uid: fields[0] as String,
     );
   }
 

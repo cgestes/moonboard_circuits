@@ -66,7 +66,7 @@ class _AddCircuitPageState extends State<AddCircuitPage> {
               tooltip: 'Save',
               onPressed: () async {
                 final db = Hive.box<Circuit>("circuits");
-                final c = Circuit(
+                final c = Circuit.create(
                     boardVersion: "mini-2020", name: name, circuit: circuit);
                 await db.put(c.uid, c);
                 ScaffoldMessenger.of(context)

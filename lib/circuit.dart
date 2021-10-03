@@ -23,8 +23,18 @@ const uuid = Uuid();
 @HiveType(typeId: 0)
 class Circuit {
   Circuit(
-      {required this.boardVersion, required this.circuit, required this.name})
-      : uid = uuid.v4();
+      {required this.boardVersion,
+      required this.circuit,
+      required this.name,
+      required this.uid});
+
+  factory Circuit.create({boardVersion, uid, name, circuit}) {
+    return Circuit(
+        boardVersion: boardVersion,
+        name: name,
+        circuit: circuit,
+        uid: uuid.v4());
+  }
 
   @HiveField(0)
   final String uid;
