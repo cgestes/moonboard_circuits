@@ -32,7 +32,7 @@ packages:
   auto_route:
     dependency: "direct main"
     description:
-      path: "../auto_route_library/auto_route"
+      path: "auto_route_library/auto_route"
       relative: true
     source: path
     version: "2.4.2"

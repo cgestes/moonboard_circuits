@@ -45,7 +45,7 @@ dev_dependencies:
 
 dependency_overrides:
   auto_route:
-    path: ../auto_route_library/auto_route
+    path: ./auto_route_library/auto_route
 
 
 
